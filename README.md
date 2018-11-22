@@ -2,7 +2,7 @@
 With this [Snips](https://snips.ai/) skill, you can ask your voice assistant to repeat its last message.
 
 ## Installation
-The easiest way to install this skill is by adding the Snips app [Say it again](TODO) to your assistant in the [Snips Console](https://console.snips.ai).
+The easiest way to install this skill is by adding the Snips app [Say it again](https://console.snips.ai/store/en/skill_YoV709qZP3n) to your assistant in the [Snips Console](https://console.snips.ai).
 
 ## Usage
 This app recognizes the following intent:
