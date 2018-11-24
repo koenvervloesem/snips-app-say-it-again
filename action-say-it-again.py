@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This module contains a Snips skill that repeats the last message that
-your voice assistant has said.
+your voice assistant has said on the site you are talking to.
 """
 
 import paho.mqtt.client as mqtt
@@ -24,12 +24,17 @@ MQTT_PORT = 1883
 
 
 class SayItAgain(object):
-    """This skill repeats the last message that your voice assistant has said."""
+    """
+    This skill repeats the last message that your voice assistant has said
+    on the site you are talking to.
+    """
 
     def __init__(self):
         """Initialize the skill."""
 
-        self.last_message = ""
+        # Create an empty dictionary that will hold the last message
+        # of each siteId.
+        self.last_messages = {}
 
         self.client = mqtt.Client()
         self.client.on_connect = self.subscribe_topics
@@ -54,19 +59,21 @@ class SayItAgain(object):
     def handle_say(self, client, userdata, msg):
         """When Snips says something, save the text."""
         payload = json.loads(msg.payload)
-        self.last_message = payload["text"]
+        self.last_messages[payload["siteId"]] = payload["text"]
 
     def handle_say_again(self, client, userdata, msg):
         """When the user asks to repeat the last message, do it."""
         payload = json.loads(msg.payload)
-        if self.last_message:
-            # If we have saved a previous message, repeat it.
+        if payload["siteId"] in self.last_messages:
+            # If we have saved a previous message for this siteId, repeat it.
+            last_message = self.last_messages[payload["siteId"]]
             client.publish(DM_END_SESSION,
-                           json.dumps({'text': self.last_message,
+                           json.dumps({'text': last_message,
                                        'sessionId': payload["sessionId"]})
                            )
         else:
-            # If there is no previous message, tell the user we're sorry.
+            # If there is no previous message for this siteId,
+            # tell the user we're sorry.
             client.publish(DM_END_SESSION,
                            json.dumps({'text': RESULT_SORRY,
                                        'sessionId': payload["sessionId"]})
