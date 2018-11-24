@@ -1,6 +1,8 @@
 # Say it again skill for Snips 
 With this [Snips](https://snips.ai/) skill, you can ask your voice assistant to repeat its last message.
 
+The app is multi-room aware: it repeats the last message it has said on the site you are talking to.
+
 ## Installation
 The easiest way to install this skill is by adding the Snips app [Say it again](https://console.snips.ai/store/en/skill_YoV709qZP3n) to your assistant in the [Snips Console](https://console.snips.ai).
 
