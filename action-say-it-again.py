@@ -15,6 +15,7 @@ import json
 RESULT_SAY_SORRY = "Sorry, I don't remember what I said. I must have fallen asleep."
 RESULT_TEXT_SORRY = "Sorry, I don't remember what you said. I must have fallen asleep."
 RESULT_TEXT = "I heard \"{}\" with likelihood {}."
+RESULT_TEXT_NOTHING = "Sorry, I didn't hear anything."
 
 # MQTT topics
 TTS_SAY = "hermes/tts/say"
@@ -44,7 +45,7 @@ class SayItAgain(object):
         # of each siteId.
         self.last_messages = {}
 
-        # Create an empty dictionary that will hold the two last captured texts
+        # Create an empty dictionary that will hold the last two captured texts
         # and their likelihoods of each siteId.
         self.last_texts = {}
 
@@ -76,7 +77,7 @@ class SayItAgain(object):
         self.last_messages[payload["siteId"]] = payload["text"]
 
     def handle_text(self, client, userdata, msg):
-        """When Snips captures a text, save it together with is likelihood."""
+        """When Snips captures a text, save it together with its likelihood."""
         # We save the last two texts in a deque because the WhatDidISay intent
         # also generates a captured text and we're not interested in that...
         payload = json.loads(msg.payload)
@@ -115,11 +116,19 @@ class SayItAgain(object):
             # repeat the first one.
             # The second one is the one that generated the current intent.
             last_text, last_likelihood = self.last_texts[payload["siteId"]][0]
-            client.publish(DM_END_SESSION,
-                           json.dumps({'text': RESULT_TEXT.format(last_text,
-                                                                  last_likelihood),
-                                       'sessionId': payload["sessionId"]})
-                           )
+            if last_text:
+                client.publish(DM_END_SESSION,
+                               json.dumps({'text': RESULT_TEXT.format(last_text,
+                                                                      last_likelihood),
+                                           'sessionId': payload["sessionId"]})
+                               )
+            else:
+                # Empty string
+                client.publish(DM_END_SESSION,
+                               json.dumps({'text': RESULT_TEXT_NOTHING,
+                                           'sessionId': payload["sessionId"]})
+                               )
+
         else:
             # If there is no previous text for this siteId,
             # tell the user we're sorry.
