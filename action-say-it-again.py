@@ -6,23 +6,16 @@ your voice assistant has said on the site you are talking to, as well as what
 Snips has understood from your last speech message.
 """
 
+import importlib
 from collections import deque
 
 import paho.mqtt.client as mqtt
 import json
 
-# Result sentence
-RESULT_SAY_SORRY = "Sorry, I don't remember what I said. I must have fallen asleep."
-RESULT_TEXT_SORRY = "Sorry, I don't remember what you said. I must have fallen asleep."
-RESULT_TEXT = "I heard \"{}\" with likelihood {}."
-RESULT_TEXT_NOTHING = "Sorry, I didn't hear anything."
-
 # MQTT topics
 TTS_SAY = "hermes/tts/say"
 ASR_TEXT_CAPTURED = "hermes/asr/textCaptured"
 DM_END_SESSION = "hermes/dialogueManager/endSession"
-INTENT_SAY_IT_AGAIN = "hermes/intent/koan:SayItAgain"
-INTENT_WHAT_DID_I_SAY = "hermes/intent/koan:WhatDidISay"
 
 # If this skill is supposed to run on the satellite,
 # please get this mqtt connection info from <config.ini>
@@ -49,6 +42,12 @@ class SayItAgain(object):
         # and their likelihoods of each siteId.
         self.last_texts = {}
 
+        # Use the assistant's language.
+        with open("/usr/share/snips/assistant/assistant.json") as json_file:
+            language = json.load(json_file)["language"]
+
+        self.i18n = importlib.import_module("locale." + language)
+
         self.client = mqtt.Client()
         self.client.on_connect = self.subscribe_topics
 
@@ -59,16 +58,16 @@ class SayItAgain(object):
         """Subscribe to the MQTT topics we're interested in."""
         client.subscribe([(TTS_SAY, 0),
                           (ASR_TEXT_CAPTURED, 0),
-                          (INTENT_SAY_IT_AGAIN, 0),
-                          (INTENT_WHAT_DID_I_SAY, 0)])
+                          (self.i18n.INTENT_SAY_IT_AGAIN, 0),
+                          (self.i18n.INTENT_WHAT_DID_I_SAY, 0)])
 
         client.message_callback_add(TTS_SAY,
                                     self.handle_say)
         client.message_callback_add(ASR_TEXT_CAPTURED,
                                     self.handle_text)
-        client.message_callback_add(INTENT_SAY_IT_AGAIN,
+        client.message_callback_add(self.i18n.INTENT_SAY_IT_AGAIN,
                                     self.handle_say_again)
-        client.message_callback_add(INTENT_WHAT_DID_I_SAY,
+        client.message_callback_add(self.i18n.INTENT_WHAT_DID_I_SAY,
                                     self.handle_what_did_i_say)
 
     def handle_say(self, client, userdata, msg):
@@ -104,7 +103,7 @@ class SayItAgain(object):
             # If there is no previous message for this siteId,
             # tell the user we're sorry.
             client.publish(DM_END_SESSION,
-                           json.dumps({'text': RESULT_SAY_SORRY,
+                           json.dumps({'text': self.i18n.RESULT_SAY_SORRY,
                                        'sessionId': payload["sessionId"]})
                            )
 
@@ -118,14 +117,14 @@ class SayItAgain(object):
             last_text, last_likelihood = self.last_texts[payload["siteId"]][0]
             if last_text:
                 client.publish(DM_END_SESSION,
-                               json.dumps({'text': RESULT_TEXT.format(last_text,
-                                                                      last_likelihood),
+                               json.dumps({'text': self.i18n.RESULT_TEXT.format(last_text,
+                                                                                last_likelihood),
                                            'sessionId': payload["sessionId"]})
                                )
             else:
                 # Empty string
                 client.publish(DM_END_SESSION,
-                               json.dumps({'text': RESULT_TEXT_NOTHING,
+                               json.dumps({'text': self.i18n.RESULT_TEXT_NOTHING,
                                            'sessionId': payload["sessionId"]})
                                )
 
@@ -133,7 +132,7 @@ class SayItAgain(object):
             # If there is no previous text for this siteId,
             # tell the user we're sorry.
             client.publish(DM_END_SESSION,
-                           json.dumps({'text': RESULT_TEXT_SORRY,
+                           json.dumps({'text': self.i18n.RESULT_TEXT_SORRY,
                                        'sessionId': payload["sessionId"]})
                            )
 
