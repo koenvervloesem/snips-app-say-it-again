@@ -46,7 +46,7 @@ class SayItAgain(object):
         with open("/usr/share/snips/assistant/assistant.json") as json_file:
             language = json.load(json_file)["language"]
 
-        self.i18n = importlib.import_module("locale." + language)
+        self.i18n = importlib.import_module("translations." + language)
 
         self.client = mqtt.Client()
         self.client.on_connect = self.subscribe_topics
