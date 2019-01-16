@@ -7,7 +7,7 @@ The app is multi-room aware: it repeats the last message it has said or heard on
 The easiest way to install this skill is by adding the corresponding Snips app to your assistant in the [Snips Console](https://console.snips.ai):
 
   * English: [Say it again](https://console.snips.ai/store/en/skill_YoV709qZP3n)
-  * German: [Wie Bitte?](https://console.snips.ai/store/de/skill_Qw5BPznz1lv)
+  * German: [Wie bitte?](https://console.snips.ai/store/de/skill_Qw5BPznz1lv)
   * French: [Say It Again ( Répète )](https://console.snips.ai/store/fr/skill_WrK0rWr9Xrp)
 
 ## Usage
