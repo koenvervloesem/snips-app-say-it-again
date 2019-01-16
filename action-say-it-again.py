@@ -63,9 +63,7 @@ class SayItAgain(object):
         """Subscribe to the MQTT topics we're interested in."""
         client.subscribe([(TTS_SAY, 0),
                           (ASR_TEXT_CAPTURED, 0),
-                          (INTENT_MQTT, 0),
-                          (self.i18n.INTENT_SAY_IT_AGAIN, 0),
-                          (self.i18n.INTENT_WHAT_DID_I_SAY, 0)])
+                          (INTENT_MQTT, 0)]) # this captures all intents - no specific intent necessary!
 
         client.message_callback_add(TTS_SAY,
                                     self.handle_say)
