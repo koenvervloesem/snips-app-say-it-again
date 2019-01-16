@@ -15,6 +15,7 @@ This app recognizes the following intents:
 
   * SayItAgain - The user asks to repeat the last message. The app responds by repeating the most recent message it uttered.
   * WhatDidISay - The user asks to repeat the last text Snips has captured. The app responds by repeating the most recent text it captured from the user's speech.
+  * RepeatAction - The user asks to repeat the last action. The app responds by repeating the most recent intent it captured at the same siteId. The SessionID will be the new one from "RepeatAction"
 
 ## Copyright
 This skill is provided by [Koen Vervloesem](mailto:koen@vervloesem.eu) as open source software. See LICENSE for more information.
