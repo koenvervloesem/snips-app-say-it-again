@@ -16,6 +16,7 @@ import json
 TTS_SAY = "hermes/tts/say"
 ASR_TEXT_CAPTURED = "hermes/asr/textCaptured"
 DM_END_SESSION = "hermes/dialogueManager/endSession"
+INTENT_MQTT = "hermes/intent/#"
 
 # If this skill is supposed to run on the satellite,
 # please get this mqtt connection info from <config.ini>
@@ -41,6 +42,10 @@ class SayItAgain(object):
         # Create an empty dictionary that will hold the last two captured texts
         # and their likelihoods of each siteId.
         self.last_texts = {}
+        
+        # Create an empty dictionary that will hold the last triggered intent
+        # of each siteId.
+        self.last_intent = {}
 
         # Use the assistant's language.
         with open("/usr/share/snips/assistant/assistant.json") as json_file:
@@ -58,17 +63,20 @@ class SayItAgain(object):
         """Subscribe to the MQTT topics we're interested in."""
         client.subscribe([(TTS_SAY, 0),
                           (ASR_TEXT_CAPTURED, 0),
-                          (self.i18n.INTENT_SAY_IT_AGAIN, 0),
-                          (self.i18n.INTENT_WHAT_DID_I_SAY, 0)])
+                          (INTENT_MQTT, 0)]) # this captures all intents - no specific intent necessary!
 
         client.message_callback_add(TTS_SAY,
                                     self.handle_say)
         client.message_callback_add(ASR_TEXT_CAPTURED,
                                     self.handle_text)
+        client.message_callback_add(INTENT_MQTT,
+                                    self.handle_intent)
         client.message_callback_add(self.i18n.INTENT_SAY_IT_AGAIN,
                                     self.handle_say_again)
         client.message_callback_add(self.i18n.INTENT_WHAT_DID_I_SAY,
                                     self.handle_what_did_i_say)
+        client.message_callback_add(self.i18n.INTENT_REPEAT_ACTION,
+                                    self.handle_repeat_action)
 
     def handle_say(self, client, userdata, msg):
         """When Snips says something, save the text."""
@@ -88,6 +96,30 @@ class SayItAgain(object):
         text = payload["text"]
         likelihood = round(payload["likelihood"], 2)
         self.last_texts[payload["siteId"]].append((text, likelihood))
+        
+    def handle_intent(self, client, userdata, msg):
+        """When an intent is triggered (and it is not the repeat skill!) save the request"""
+        # ignore the repeat action! we want to perform repeat multiple times
+        # not ignoring it might create an endless loop!
+        if msg.topic != self.i18n.INTENT_REPEAT_ACTION:
+            payload = json.loads(msg.payload)
+            self.last_intent[payload["siteId"]] = msg
+    
+    def handle_repeat_action(self, client, userdata, msg):
+        """Get the last captured request at that siteId and repeat"""
+        payload = json.loads(msg.payload)
+        if payload["siteId"] in self.last_intent:
+            last_msg = self.last_intent[payload["siteId"]]
+            last_payload = json.loads(last_msg.payload)
+            last_payload["sessionId"] = payload["sessionId"]
+            client.publish(last_msg.topic, json.dumps(last_payload))
+        else:
+            # If there is no previous message for this siteId,
+            # tell the user we're sorry.
+            client.publish(DM_END_SESSION,
+                           json.dumps({'text': self.i18n.RESULT_INTENT_SORRY,
+                                       'sessionId': payload["sessionId"]})
+                           )            
 
     def handle_say_again(self, client, userdata, msg):
         """When the user asks to repeat the last message, do it."""
