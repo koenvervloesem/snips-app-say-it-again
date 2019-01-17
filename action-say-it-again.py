@@ -3,7 +3,8 @@
 """
 This module contains a Snips skill that repeats the last message that
 your voice assistant has said on the site you are talking to, as well as what
-Snips has understood from your last speech message.
+Snips has understood from your last speech message. It can also repeat the
+action corresponding to the last intent.
 """
 
 import importlib
@@ -42,7 +43,7 @@ class SayItAgain(object):
         # Create an empty dictionary that will hold the last two captured texts
         # and their likelihoods of each siteId.
         self.last_texts = {}
-        
+
         # Create an empty dictionary that will hold the last triggered intent
         # of each siteId.
         self.last_intent = {}
@@ -63,7 +64,7 @@ class SayItAgain(object):
         """Subscribe to the MQTT topics we're interested in."""
         client.subscribe([(TTS_SAY, 0),
                           (ASR_TEXT_CAPTURED, 0),
-                          (INTENT_MQTT, 0)]) # this captures all intents - no specific intent necessary!
+                          (INTENT_MQTT, 0)])  # This captures all intents.
 
         client.message_callback_add(TTS_SAY,
                                     self.handle_say)
@@ -96,17 +97,20 @@ class SayItAgain(object):
         text = payload["text"]
         likelihood = round(payload["likelihood"], 2)
         self.last_texts[payload["siteId"]].append((text, likelihood))
-        
+
     def handle_intent(self, client, userdata, msg):
-        """When an intent is triggered (and it is not the repeat skill!) save the request"""
-        # ignore the repeat action! we want to perform repeat multiple times
-        # not ignoring it might create an endless loop!
+        """
+        When an intent is triggered (and it is not the RepeatAction intent!),
+        save the request.
+        """
+        # Ignore the RepeatAction intent! We want to perform repeat multiple
+        # times. Not ignoring it might create an endless loop!
         if msg.topic != self.i18n.INTENT_REPEAT_ACTION:
             payload = json.loads(msg.payload)
             self.last_intent[payload["siteId"]] = msg
-    
+
     def handle_repeat_action(self, client, userdata, msg):
-        """Get the last captured request at that siteId and repeat"""
+        """Get the last captured intent and repeat."""
         payload = json.loads(msg.payload)
         if payload["siteId"] in self.last_intent:
             last_msg = self.last_intent[payload["siteId"]]
@@ -119,7 +123,7 @@ class SayItAgain(object):
             client.publish(DM_END_SESSION,
                            json.dumps({'text': self.i18n.RESULT_INTENT_SORRY,
                                        'sessionId': payload["sessionId"]})
-                           )            
+                           )
 
     def handle_say_again(self, client, userdata, msg):
         """When the user asks to repeat the last message, do it."""
