@@ -54,7 +54,7 @@ class SayItAgain(object):
             mqtt_host_port = toml.load('/etc/snips.toml')['snips-common']['mqtt']
             mqtt_host, mqtt_port = mqtt_host_port.split(':')
             mqtt_port = int(mqtt_port)
-        except KeyError, ValueError:
+        except (KeyError, ValueError):
             # If the mqtt key doesn't exist or doesn't have the correct format,
             # use the default values.
             mqtt_host = 'localhost'
