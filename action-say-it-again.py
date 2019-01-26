@@ -7,23 +7,18 @@ Snips has understood from your last speech message. It can also repeat the
 action corresponding to the last intent.
 """
 
-import importlib
 from collections import deque
+import importlib
+import json
 
 import paho.mqtt.client as mqtt
-import json
+import toml
 
 # MQTT topics
 TTS_SAY = "hermes/tts/say"
 ASR_TEXT_CAPTURED = "hermes/asr/textCaptured"
 DM_END_SESSION = "hermes/dialogueManager/endSession"
 INTENT_MQTT = "hermes/intent/#"
-
-# If this skill is supposed to run on the satellite,
-# please get this mqtt connection info from <config.ini>
-# Hint: MQTT server is always running on the master device
-MQTT_HOST = 'localhost'
-MQTT_PORT = 1883
 
 
 class SayItAgain(object):
@@ -54,10 +49,21 @@ class SayItAgain(object):
 
         self.i18n = importlib.import_module("translations." + language)
 
+        # Get the MQTT host and port from /etc/snips.toml.
+        try:
+            mqtt_host_port = toml.load('/etc/snips.toml')['snips-common']['mqtt']
+            mqtt_host, mqtt_port = mqtt_host_port.split(':')
+            mqtt_port = int(mqtt_port)
+        except KeyError, ValueError:
+            # If the mqtt key doesn't exist or doesn't have the correct format,
+            # use the default values.
+            mqtt_host = 'localhost'
+            mqtt_port = 1883
+
         self.client = mqtt.Client()
         self.client.on_connect = self.subscribe_topics
 
-        self.client.connect(MQTT_HOST, MQTT_PORT, 60)
+        self.client.connect(mqtt_host, mqtt_port, 60)
         self.client.loop_forever()
 
     def subscribe_topics(self, client, userdata, flags, rc):
