@@ -87,14 +87,14 @@ class SayItAgain(object):
 
     def handle_say(self, client, userdata, msg):
         """When Snips says something, save the text."""
-        payload = json.loads(msg.payload)
+        payload = json.loads(msg.payload.decode('utf-8'))
         self.last_messages[payload["siteId"]] = payload["text"]
 
     def handle_text(self, client, userdata, msg):
         """When Snips captures a text, save it together with its likelihood."""
         # We save the last two texts in a deque because the WhatDidISay intent
         # also generates a captured text and we're not interested in that...
-        payload = json.loads(msg.payload)
+        payload = json.loads(msg.payload.decode('utf-8'))
         if payload["siteId"] not in self.last_texts:
             # Create a new deque of length 2.
             self.last_texts[payload["siteId"]] = deque(maxlen=2)
@@ -112,15 +112,15 @@ class SayItAgain(object):
         # Ignore the RepeatAction intent! We want to perform repeat multiple
         # times. Not ignoring it might create an endless loop!
         if msg.topic != self.i18n.INTENT_REPEAT_ACTION:
-            payload = json.loads(msg.payload)
+            payload = json.loads(msg.payload.decode('utf-8'))
             self.last_intent[payload["siteId"]] = msg
 
     def handle_repeat_action(self, client, userdata, msg):
         """Get the last captured intent and repeat."""
-        payload = json.loads(msg.payload)
+        payload = json.loads(msg.payload.decode('utf-8'))
         if payload["siteId"] in self.last_intent:
             last_msg = self.last_intent[payload["siteId"]]
-            last_payload = json.loads(last_msg.payload)
+            last_payload = json.loads(last_msg.payload.decode('utf-8'))
             last_payload["sessionId"] = payload["sessionId"]
             client.publish(last_msg.topic, json.dumps(last_payload))
         else:
@@ -133,7 +133,7 @@ class SayItAgain(object):
 
     def handle_say_again(self, client, userdata, msg):
         """When the user asks to repeat the last message, do it."""
-        payload = json.loads(msg.payload)
+        payload = json.loads(msg.payload.decode('utf-8'))
         if payload["siteId"] in self.last_messages:
             # If we have saved a previous message for this siteId, repeat it.
             last_message = self.last_messages[payload["siteId"]]
@@ -151,7 +151,7 @@ class SayItAgain(object):
 
     def handle_what_did_i_say(self, client, userdata, msg):
         """When the user asks to repeat the last captured text, do it."""
-        payload = json.loads(msg.payload)
+        payload = json.loads(msg.payload.decode('utf-8'))
         if len(self.last_texts[payload["siteId"]]) == 2:
             # If we have saved two previous texts for this siteId,
             # repeat the first one.
