@@ -13,6 +13,7 @@ import json
 
 from snipskit.apps import MQTTSnipsApp
 from snipskit.app_decorators import topic
+from snipskit.config import AssistantConfig
 
 
 # MQTT topics
@@ -20,6 +21,9 @@ TTS_SAY = "hermes/tts/say"
 ASR_TEXT_CAPTURED = "hermes/asr/textCaptured"
 DM_END_SESSION = "hermes/dialogueManager/endSession"
 INTENT_ALL = "hermes/intent/#"
+
+# Use the assistant's language.
+i18n = importlib.import_module('translations.' + AssistantConfig()['language'])
 
 
 class SayItAgain(MQTTSnipsApp):
@@ -44,17 +48,12 @@ class SayItAgain(MQTTSnipsApp):
         # of each siteId.
         self.last_intent = {}
 
-        # Use the assistant's language.
-        self.i18n = importlib.import_module('translations.' + self.assistant['language'])
-
-
     @topic(TTS_SAY)
     def handle_say(self, client, userdata, msg):
         """When Snips says something, save the text."""
         payload = json.loads(msg.payload.decode('utf-8'))
         self.last_messages[payload["siteId"]] = payload["text"]
 
-    
     @topic(ASR_TEXT_CAPTURED)
     def handle_text(self, client, userdata, msg):
         """When Snips captures a text, save it together with its likelihood."""
@@ -70,7 +69,6 @@ class SayItAgain(MQTTSnipsApp):
         likelihood = round(payload["likelihood"], 2)
         self.last_texts[payload["siteId"]].append((text, likelihood))
 
-
     @topic(INTENT_ALL)
     def handle_intent(self, client, userdata, msg):
         """
@@ -79,12 +77,11 @@ class SayItAgain(MQTTSnipsApp):
         """
         # Ignore the RepeatAction intent! We want to perform repeat multiple
         # times. Not ignoring it might create an endless loop!
-        if msg.topic != self.i18n.INTENT_REPEAT_ACTION:
+        if msg.topic != i18n.INTENT_REPEAT_ACTION:
             payload = json.loads(msg.payload.decode('utf-8'))
             self.last_intent[payload["siteId"]] = msg
 
-
-    @topic(self.i18n.INTENT_REPEAT_ACTION)
+    @topic(i18n.INTENT_REPEAT_ACTION)
     def handle_repeat_action(self, client, userdata, msg):
         """Get the last captured intent and repeat."""
         payload = json.loads(msg.payload.decode('utf-8'))
@@ -97,12 +94,11 @@ class SayItAgain(MQTTSnipsApp):
             # If there is no previous message for this siteId,
             # tell the user we're sorry.
             client.publish(DM_END_SESSION,
-                           json.dumps({'text': self.i18n.RESULT_INTENT_SORRY,
+                           json.dumps({'text': i18n.RESULT_INTENT_SORRY,
                                        'sessionId': payload["sessionId"]})
                            )
 
-
-    @topic(self.i18n.INTENT_SAY_IT_AGAIN)
+    @topic(i18n.INTENT_SAY_IT_AGAIN)
     def handle_say_again(self, client, userdata, msg):
         """When the user asks to repeat the last message, do it."""
         payload = json.loads(msg.payload.decode('utf-8'))
@@ -117,12 +113,11 @@ class SayItAgain(MQTTSnipsApp):
             # If there is no previous message for this siteId,
             # tell the user we're sorry.
             client.publish(DM_END_SESSION,
-                           json.dumps({'text': self.i18n.RESULT_SAY_SORRY,
+                           json.dumps({'text': i18n.RESULT_SAY_SORRY,
                                        'sessionId': payload["sessionId"]})
                            )
 
-
-    @topic(self.i18n.INTENT_WHAT_DID_I_SAY)
+    @topic(i18n.INTENT_WHAT_DID_I_SAY)
     def handle_what_did_i_say(self, client, userdata, msg):
         """When the user asks to repeat the last captured text, do it."""
         payload = json.loads(msg.payload.decode('utf-8'))
@@ -133,14 +128,14 @@ class SayItAgain(MQTTSnipsApp):
             last_text, last_likelihood = self.last_texts[payload["siteId"]][0]
             if last_text:
                 client.publish(DM_END_SESSION,
-                               json.dumps({'text': self.i18n.RESULT_TEXT.format(last_text,
-                                                                                last_likelihood),
+                               json.dumps({'text': i18n.RESULT_TEXT.format(last_text,
+                                                                           last_likelihood),
                                            'sessionId': payload["sessionId"]})
                                )
             else:
                 # Empty string
                 client.publish(DM_END_SESSION,
-                               json.dumps({'text': self.i18n.RESULT_TEXT_NOTHING,
+                               json.dumps({'text': i18n.RESULT_TEXT_NOTHING,
                                            'sessionId': payload["sessionId"]})
                                )
 
@@ -148,7 +143,7 @@ class SayItAgain(MQTTSnipsApp):
             # If there is no previous text for this siteId,
             # tell the user we're sorry.
             client.publish(DM_END_SESSION,
-                           json.dumps({'text': self.i18n.RESULT_TEXT_SORRY,
+                           json.dumps({'text': i18n.RESULT_TEXT_SORRY,
                                        'sessionId': payload["sessionId"]})
                            )
 
