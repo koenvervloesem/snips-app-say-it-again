@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-This module contains a Snips skill that repeats the last message that
+This module contains a Snips app that repeats the last message that
 your voice assistant has said on the site you are talking to, as well as what
 Snips has understood from your last speech message. It can also repeat the
 action corresponding to the last intent.
@@ -23,13 +23,13 @@ INTENT_MQTT = "hermes/intent/#"
 
 class SayItAgain(object):
     """
-    This skill repeats the last message that your voice assistant has said
+    This Snips app repeats the last message that your voice assistant has said
     on the site you are talking to, as well as what Snips has understood
     from your last speech message.
     """
 
     def __init__(self):
-        """Initialize the skill."""
+        """Initialize the app."""
 
         # Create an empty dictionary that will hold the last message
         # of each siteId.
