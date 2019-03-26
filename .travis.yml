@@ -1,0 +1,16 @@
+dist: xenial
+
+language: python
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+
+install:
+  - ./setup.sh
+  - pip3 install bashate pylint
+
+script:
+  - shellcheck setup.sh
+  - bashate setup.sh
+  - pylint -E *.py
