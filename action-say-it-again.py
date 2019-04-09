@@ -9,15 +9,15 @@ action corresponding to the last intent.
 from collections import deque
 import importlib
 
+from snipskit.config import AssistantConfig
 from snipskit.mqtt.apps import MQTTSnipsApp
 from snipskit.mqtt.decorators import topic
-from snipskit.config import AssistantConfig
+from snipskit.mqtt.dialogue import end_session
 
 
 # MQTT topics
 TTS_SAY = "hermes/tts/say"
 ASR_TEXT_CAPTURED = "hermes/asr/textCaptured"
-DM_END_SESSION = "hermes/dialogueManager/endSession"
 INTENT_ALL = "hermes/intent/#"
 
 # Use the assistant's language.
@@ -86,9 +86,8 @@ class SayItAgain(MQTTSnipsApp):
         else:
             # If there is no previous message for this siteId,
             # tell the user we're sorry.
-            self.publish(DM_END_SESSION,
-                         {'text': i18n.RESULT_INTENT_SORRY,
-                          'sessionId': payload["sessionId"]})
+            self.publish(*end_session(payload["sessionId"],
+                                      i18n.RESULT_INTENT_SORRY))
 
     @topic(i18n.INTENT_SAY_IT_AGAIN)
     def handle_say_again(self, topic, payload):
@@ -96,15 +95,12 @@ class SayItAgain(MQTTSnipsApp):
         if payload["siteId"] in self.last_messages:
             # If we have saved a previous message for this siteId, repeat it.
             last_message = self.last_messages[payload["siteId"]]
-            self.publish(DM_END_SESSION,
-                         {'text': last_message,
-                          'sessionId': payload["sessionId"]})
+            self.publish(*end_session(payload["sessionId"], last_message))
         else:
             # If there is no previous message for this siteId,
             # tell the user we're sorry.
-            self.publish(DM_END_SESSION,
-                         {'text': i18n.RESULT_SAY_SORRY,
-                          'sessionId': payload["sessionId"]})
+            self.publish(*end_session(payload["sessionId"],
+                                      i18n.RESULT_SAY_SORRY))
 
     @topic(i18n.INTENT_WHAT_DID_I_SAY)
     def handle_what_did_i_say(self, topic, payload):
@@ -115,22 +111,19 @@ class SayItAgain(MQTTSnipsApp):
             # The second one is the one that generated the current intent.
             last_text, last_likelihood = self.last_texts[payload["siteId"]][0]
             if last_text:
-                self.publish(DM_END_SESSION,
-                             {'text': i18n.RESULT_TEXT.format(last_text,
-                                                              last_likelihood),
-                              'sessionId': payload["sessionId"]})
+                self.publish(*end_session(payload["sessionId"],
+                                          i18n.RESULT_TEXT.format(last_text,
+                                                                  last_likelihood)))
             else:
                 # Empty string
-                self.publish(DM_END_SESSION,
-                             {'text': i18n.RESULT_TEXT_NOTHING,
-                              'sessionId': payload["sessionId"]})
+                self.publish(*end_session(payload["sessionId"],
+                                          i18n.RESULT_TEXT_NOTHING))
 
         else:
             # If there is no previous text for this siteId,
             # tell the user we're sorry.
-            self.publish(DM_END_SESSION,
-                         {'text': i18n.RESULT_TEXT_SORRY,
-                          'sessionId': payload["sessionId"]})
+            self.publish(*end_session(payload["sessionId"],
+                                      i18n.RESULT_TEXT_SORRY))
 
 
 if __name__ == "__main__":
