@@ -1,1 +1,1 @@
-snipskit[mqtt]~=0.5.0
+snipskit[mqtt]==0.5.1

@@ -31,7 +31,7 @@ class SayItAgain(MQTTSnipsApp):
     from your last speech message.
     """
 
-    def __init__(self):
+    def initialize(self):
         """Initialize the app."""
 
         # Create an empty dictionary that will hold the last message
