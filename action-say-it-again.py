@@ -9,7 +9,7 @@ action corresponding to the last intent.
 from collections import deque
 import importlib
 
-from snipskit.config import AssistantConfig
+from snipskit.apps import SnipsAppMixin
 from snipskit.mqtt.apps import MQTTSnipsApp
 from snipskit.mqtt.decorators import topic
 from snipskit.mqtt.dialogue import end_session
@@ -21,7 +21,7 @@ ASR_TEXT_CAPTURED = "hermes/asr/textCaptured"
 INTENT_ALL = "hermes/intent/#"
 
 # Use the assistant's language.
-i18n = importlib.import_module('translations.' + AssistantConfig()['language'])
+i18n = importlib.import_module('translations.' + SnipsAppMixin().assistant['language'])
 
 
 class SayItAgain(MQTTSnipsApp):
