@@ -1,0 +1,383 @@
+{
+  "customIntentData" : {
+    "language" : "de",
+    "utterances" : [ {
+      "data" : [ {
+        "text" : "bitte gib nochmal meine letzte eingabe aus",
+        "range" : {
+          "start" : 0,
+          "end" : 42
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte gib meine letzte eingabe wieder",
+        "range" : {
+          "start" : 0,
+          "end" : 37
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte gib aus was ich zuletzt gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 41
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "gib aus was ich zuletzt gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 35
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "gib meinen letzten satz aus",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "gib meinen letzten Satz wieder",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "gib meine letzte eingabe wieder",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole meinen letzten Satz",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Wiederhole meine letzte Eingabe",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du mich verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 23
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du überhaupt verstanden was ich gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 48
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du mich falsch verstanden?",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du bitte verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 28
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was bitte hast du verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 28
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 22
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du mich verstanden?",
+        "range" : {
+          "start" : 0,
+          "end" : 24
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte meine letzte eingabe",
+        "range" : {
+          "start" : 0,
+          "end" : 37
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte was ich gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 36
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du wiederholen was ich gesagt habe?",
+        "range" : {
+          "start" : 0,
+          "end" : 42
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was habe ich gerade gesagt?",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole was ich gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was habe ich gesagt",
+        "range" : {
+          "start" : 0,
+          "end" : 19
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was habe ich gerade gesagt",
+        "range" : {
+          "start" : 0,
+          "end" : 26
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole die letzte eingabe",
+        "range" : {
+          "start" : 0,
+          "end" : 29
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole was du gerade gehört hast",
+        "range" : {
+          "start" : 0,
+          "end" : 36
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "du hast mich falsch verstanden, bitte wiederhole was ich gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 68
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du falsch verstanden was ich gesagt habe?",
+        "range" : {
+          "start" : 0,
+          "end" : 46
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du mich falsch verstanden?",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "hast du verstanden was ich gesagt habe?",
+        "range" : {
+          "start" : 0,
+          "end" : 39
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du verstanden?",
+        "range" : {
+          "start" : 0,
+          "end" : 23
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte wiederhole was du gerade gehört hast",
+        "range" : {
+          "start" : 0,
+          "end" : 42
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du zuletzt gehört",
+        "range" : {
+          "start" : 0,
+          "end" : 26
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du gehört",
+        "range" : {
+          "start" : 0,
+          "end" : 18
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was war die letzte eingabe?",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du gerade verstanden?",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du wiederholen was ich gesagt habe?",
+        "range" : {
+          "start" : 0,
+          "end" : 42
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du mir bitte sagen was ich gerade gesagt habe?",
+        "range" : {
+          "start" : 0,
+          "end" : 53
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du bitte wiederholen was du verstanden hast?",
+        "range" : {
+          "start" : 0,
+          "end" : 51
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte wiederhole meinen letzten satz",
+        "range" : {
+          "start" : 0,
+          "end" : 36
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole meinen letzten satz",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du zuletzt verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was habe ich zuletzt gesagt",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Was war die letzte eingabe?",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du bitte wiederholen was ich gerade gesagt habe?",
+        "range" : {
+          "start" : 0,
+          "end" : 55
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Bitte wiederhole was ich gerade gesagt habe",
+        "range" : {
+          "start" : 0,
+          "end" : 43
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Kannst du mir sagen was du gerade verstanden hast?",
+        "range" : {
+          "start" : 0,
+          "end" : 50
+        }
+      } ]
+    } ]
+  },
+  "id" : "intent_1rXPeO20AQW",
+  "config" : {
+    "displayName" : "WhatDidISay",
+    "name" : "WhatDidISay",
+    "description" : "Was habe ICH gerade gesagt?",
+    "language" : "de",
+    "slots" : [ ],
+    "exampleQueries" : [ "bitte gib nochmal meine letzte eingabe aus", "bitte gib meine letzte eingabe wieder", "bitte gib aus was ich zuletzt gesagt habe", "gib aus was ich zuletzt gesagt habe", "gib meinen letzten satz aus", "gib meinen letzten Satz wieder", "gib meine letzte eingabe wieder", "wiederhole meinen letzten Satz", "Wiederhole meine letzte Eingabe", "hast du mich verstanden" ]
+  }
+}

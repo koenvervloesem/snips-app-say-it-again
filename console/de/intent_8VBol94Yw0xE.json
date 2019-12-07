@@ -1,0 +1,495 @@
+{
+  "customIntentData" : {
+    "language" : "de",
+    "utterances" : [ {
+      "data" : [ {
+        "text" : "bitte wiederhole den letzten Satz noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 46
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte wiederhole den letzten Satz noch einmal",
+        "range" : {
+          "start" : 0,
+          "end" : 45
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte wiederhole das nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 28
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte sage das noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte sage das doch noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 32
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte sage das nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 22
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte sag das doch nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 26
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte sag das noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 26
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "sag dass nochmal bitte",
+        "range" : {
+          "start" : 0,
+          "end" : 22
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole deine letzte Nachricht, bitte",
+        "range" : {
+          "start" : 0,
+          "end" : 40
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du mir bitte sagen, was du zuletzt ausgegeben hast",
+        "range" : {
+          "start" : 0,
+          "end" : 57
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte nochmal deinen letzten satz",
+        "range" : {
+          "start" : 0,
+          "end" : 44
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte was du zuletzt gesagt hast",
+        "range" : {
+          "start" : 0,
+          "end" : 43
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte nochmal was du zuletzt gesagt hast",
+        "range" : {
+          "start" : 0,
+          "end" : 51
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte deine letzte ausgabe",
+        "range" : {
+          "start" : 0,
+          "end" : 37
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole bitte deinen letzten satz",
+        "range" : {
+          "start" : 0,
+          "end" : 36
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole deinen letzten satz",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole deine letzte nachricht",
+        "range" : {
+          "start" : 0,
+          "end" : 33
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "sag das nochmal, bitte",
+        "range" : {
+          "start" : 0,
+          "end" : 22
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du das bitte nochmal wiederholen",
+        "range" : {
+          "start" : 0,
+          "end" : 39
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "ich habe dich nicht verstanden, wiederhole das bitte noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 65
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wie bitte? was hast du gesagt?",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wie war das? ich habe dich nicht verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 43
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "sag das doch bitte noch mal",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte wiederhole das noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 33
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du gesagt?",
+        "range" : {
+          "start" : 0,
+          "end" : 19
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole das bitte noch einmal",
+        "range" : {
+          "start" : 0,
+          "end" : 32
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wie bitte, was hast du gesagt?",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wie bitte?",
+        "range" : {
+          "start" : 0,
+          "end" : 10
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du gerade erzählt?",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte wiederhole was du zuletzt gesagt hast",
+        "range" : {
+          "start" : 0,
+          "end" : 43
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du das bitte nocheinmal sagen",
+        "range" : {
+          "start" : 0,
+          "end" : 36
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "ich habe nicht verstanden was du gesagt hast",
+        "range" : {
+          "start" : 0,
+          "end" : 44
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "ich habe dich nicht verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "entschuldigung, ich habe dich nicht verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 46
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du gerade gesagt",
+        "range" : {
+          "start" : 0,
+          "end" : 25
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Bitte sag das doch noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Sag das doch bitte noch ein mal",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Wiederhole die letzte Ausgabe",
+        "range" : {
+          "start" : 0,
+          "end" : 29
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wie war das letzte nochmal?",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "kannst du das bitte wiederholen?",
+        "range" : {
+          "start" : 0,
+          "end" : 32
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole das bitte nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 28
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "wiederhole die ausgabe",
+        "range" : {
+          "start" : 0,
+          "end" : 22
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "was hast du als letztes gesagt",
+        "range" : {
+          "start" : 0,
+          "end" : 30
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Was hast du zuletzt gesagt",
+        "range" : {
+          "start" : 0,
+          "end" : 26
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "bitte sage das nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 22
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Kannst du das nochmal sagen",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Wiederhole den letzten Satz",
+        "range" : {
+          "start" : 0,
+          "end" : 27
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Entschuldige, ich habe dich nicht verstanden",
+        "range" : {
+          "start" : 0,
+          "end" : 44
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Wie bitte?",
+        "range" : {
+          "start" : 0,
+          "end" : 10
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Wie war das?",
+        "range" : {
+          "start" : 0,
+          "end" : 12
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Kannst du das bitte nochmal sagen",
+        "range" : {
+          "start" : 0,
+          "end" : 33
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Sag das bitte nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 21
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Bitte sag das nochmal",
+        "range" : {
+          "start" : 0,
+          "end" : 21
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Kannst du deinen letzten Satz bitte wiederholen?",
+        "range" : {
+          "start" : 0,
+          "end" : 48
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Bitte, was hast du gesagt?",
+        "range" : {
+          "start" : 0,
+          "end" : 26
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Bitte wiederhole den letzten Satz",
+        "range" : {
+          "start" : 0,
+          "end" : 33
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Kannst du das letzte bitte wiederholen?",
+        "range" : {
+          "start" : 0,
+          "end" : 39
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "ich habe dich nicht verstanden?",
+        "range" : {
+          "start" : 0,
+          "end" : 31
+        }
+      } ]
+    }, {
+      "data" : [ {
+        "text" : "Was hast du gesagt?",
+        "range" : {
+          "start" : 0,
+          "end" : 19
+        }
+      } ]
+    } ]
+  },
+  "id" : "intent_8VBol94Yw0xE",
+  "config" : {
+    "displayName" : "SayItAgain",
+    "name" : "SayItAgain",
+    "description" : "Wiederholt die letzte Ausgabe von Snips",
+    "language" : "de",
+    "slots" : [ ],
+    "exampleQueries" : [ "bitte wiederhole den letzten Satz noch ein mal", "bitte wiederhole den letzten Satz noch einmal", "bitte wiederhole das nochmal", "bitte sage das noch ein mal", "bitte sage das doch noch ein mal", "bitte sage das nochmal", "bitte sag das doch nochmal", "bitte sag das noch ein mal", "sag dass nochmal bitte", "wiederhole deine letzte Nachricht, bitte" ]
+  }
+}
