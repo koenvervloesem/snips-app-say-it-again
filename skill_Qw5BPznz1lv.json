@@ -1,0 +1,17 @@
+{
+  "name" : "Wie bitte?",
+  "repository" : "https://github.com/koenvervloesem/snips-app-say-it-again",
+  "changelog" : "Save SNIPS! https://www.gopetition.com/petitions/let-snips-makers-live.html\nSign today, or everything will be shut down! :(",
+  "description" : "Save SNIPS! https://www.gopetition.com/petitions/let-snips-makers-live.html\nSign today, or everything will be shut down! :(\n\nEine Übersetzung des genialen Programms von koan: \"Say it again\" im Original hier zu finden: https://console.snips.ai/store/en/skill_YoV709qZP3n\n\nDiese App dient dazu die Kommunikation zwischen Snips und dir zu verbessern.\n\nHast du nicht gehört was Snips gesagt hat, weil es gerade zu laut war oder du einfach nicht genau hingehört hast? Bitte einfach deinen Snips Assistenten die letzte Aussage zu wiederholen: \"Was hast du gesagt?\"\n\nHat Snips dich falsch verstanden und du wunderst dich, was genau es verstanden hat? Frage Snips welche Eingabe zuletzt verstanden wurde: \"Was hast du gehört?\"\nNoch dazu wird die Wahrscheinlichkeit des Erkannten ausgegeben!\n\nUpdate 19.01.2019: Jetzt auch mit \"Nochmal!\" Wiederhole die letzte Aktion. War der letzte Befehl \"erhöhe die Lautstärke\" sage so oft \"Nochmal\" bis es laut genug ist. (Bitte schlagt noch weitere Kommandos dafür vor!)\n\nDiese App funktioniert auch in mehreren Räumen! Du wirst immer nur das wiederholt kriegen, was in deinem aktuellen Raum gesprochen wurde.\n\nDas original Coding von koan befindet sich auch in GitHub: https://github.com/koenvervloesem/snips-app-say-it-again\n\nFür Verbesserungsvorschläge gibt es zwei Wege:\nZur original englische Version, für neue Features oder Korrekturen: koen@vervloesem.eu\noder für die Übersetzung, für neue Trainings Beispiele - und natürlich auch Features und Verbesserungen: phil@uselessbrickwall.com\n\nIn diesem Sinne: Viel Spaß mit der App und lass doch bitte eine Bewertung da - und am Wichtigsten: Vielen Dank für die super Idee und Umsetzung an koan! Schaut doch auch mal in seine anderen Apps:\nhttps://console.snips.ai/user/user_QawyvzOD9qM\n",
+  "skillType" : "GITHUB",
+  "intents" : [ {
+    "id" : "intent_1rXPeO20AQW"
+  }, {
+    "id" : "intent_8VBol94Yw0xE"
+  }, {
+    "id" : "intent_YN72l0WYkA"
+  } ],
+  "id" : "skill_Qw5BPznz1lv",
+  "language" : "de",
+  "imageUrl" : "https://console.snips.ai/images/bundles/bundle-assistant.svg"
+}
