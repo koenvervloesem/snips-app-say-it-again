@@ -1,0 +1,17 @@
+{
+  "name" : "Say it again",
+  "repository" : "https://github.com/koenvervloesem/snips-app-say-it-again",
+  "changelog" : "Expanded the example sentences of the intents.",
+  "description" : "The purpose of this app is to improve communication between Snips and you:\n\n- Didn't you hear what Snips said because of some noise or because you weren't listening closely? Just ask your Snips assistant to repeat its last message: “What did you say?”\n- Did Snips clearly misunderstand you and do you want to know what it heard in your speech? Just ask your Snips assistant to repeat the last message it captured from your speech: \"What did you hear?\" It also adds the likelihood of the captured message.\n- Do you want Snips to repeat the last action it performed? Just ask your Snips assistant to repeat it: \"Do it again\". For instance: if you say \"Roll a die\" ( https://console.snips.ai/store/en/skill_NmlgOeBBO13 ) and then multiple times \"Again\", your assistant will roll a new die every time.\n\nThe app is multi-room aware: it repeats the last message it has said or heard or the last action it has performed on the site you are talking to.\n\nThe code can be found on GitHub: https://github.com/koenvervloesem/snips-app-say-it-again\n\nIf you have some suggestions for improvements, such as new training examples or new functionality, or if you found a bug, feel free to contact me at koen@vervloesem.eu and I'll be happy to add or correct it. And if you like my app, please rate it :-)\n\nThis app also exists in:\n\n- French: https://console.snips.ai/store/fr/skill_WrK0rWr9Xrp\n- German: https://console.snips.ai/store/de/skill_Qw5BPznz1lv\n- Italian: https://console.snips.ai/store/it/skill_zmzla0BkBbQ",
+  "skillType" : "GITHUB",
+  "intents" : [ {
+    "id" : "intent_Nq8kZ3B2dGN"
+  }, {
+    "id" : "intent_o80qgYZ98oD"
+  }, {
+    "id" : "intent_qrB4OdbzPv"
+  } ],
+  "id" : "skill_YoV709qZP3n",
+  "language" : "en",
+  "imageUrl" : "https://console.snips.ai/images/bundles/bundle-assistant.svg"
+}
